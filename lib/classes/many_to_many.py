@@ -57,11 +57,13 @@ class Player(Game):
     @classmethod
     def highest_scored(cls, game):
         players = [player for player in cls.all if player.played_game(game)]
+        print(players)
+        print(game)
 
         if not players:
             return None
         
-        high_score = max(players, key = lambda player: player.average_score(game))
+        high_score = max(players, key = lambda player: game.average_score(player))
 
         return high_score
 
